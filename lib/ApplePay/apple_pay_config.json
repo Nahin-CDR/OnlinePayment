@@ -1,0 +1,41 @@
+{
+  "provider": "apple_pay",
+  "data": {
+    "merchantIdentifier": "merchant.com.yourapp",
+    "displayName": "Your App Name",
+    "merchantCapabilities": ["3DS"],
+    "supportedNetworks": ["visa", "masterCard", "amex"],
+    "countryCode": "US",
+    "currencyCode": "USD",
+    "requiredBillingContactFields": ["email", "name", "phone", "postalAddress"],
+    "requiredShippingContactFields": ["email", "name", "phone", "postalAddress"],
+    "shippingMethods": [
+      {
+        "label": "Standard Shipping",
+        "amount": "5.00",
+        "detail": "Arrives in 5-7 days",
+        "identifier": "standard"
+      },
+      {
+        "label": "Express Shipping",
+        "amount": "15.00",
+        "detail": "Arrives in 1-2 days",
+        "identifier": "express"
+      }
+    ],
+    "paymentSummaryItems": [
+      {
+        "label": "Item 1",
+        "amount": "10.00"
+      },
+      {
+        "label": "Shipping",
+        "amount": "5.00"
+      },
+      {
+        "label": "Total",
+        "amount": "15.00"
+      }
+    ]
+  }
+}
