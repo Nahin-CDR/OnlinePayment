@@ -2,25 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'In-App Purchase Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: InAppPurchaseDemo(),
-    );
-  }
-}
-
 class InAppPurchaseDemo extends StatefulWidget {
   const InAppPurchaseDemo({super.key});
 
@@ -29,8 +10,6 @@ class InAppPurchaseDemo extends StatefulWidget {
     // TODO: implement createState
     return _InAppPurchaseDemoState();
   }
-
-
 }
 
 class _InAppPurchaseDemoState extends State<InAppPurchaseDemo> {
@@ -41,7 +20,8 @@ class _InAppPurchaseDemoState extends State<InAppPurchaseDemo> {
   List<PurchaseDetails> _purchases = [];
 
   // Ei product ID ti apnar App Store Connect ba Play Console e configure kora thakte hobe.
-  final String _productId = 'com.example.testproduct';
+  final String _productId =
+      'com.example.testproduct2'; //'com.example.testproduct';
 
   @override
   void initState() {
@@ -97,7 +77,8 @@ class _InAppPurchaseDemoState extends State<InAppPurchaseDemo> {
   }
 
   void _buyProduct(ProductDetails productDetails) {
-    final PurchaseParam purchaseParam = PurchaseParam(productDetails: productDetails);
+    final PurchaseParam purchaseParam =
+        PurchaseParam(productDetails: productDetails);
     // Consumable purchase er jonno buyConsumable() use kora hoy
     _iap.buyConsumable(purchaseParam: purchaseParam);
   }
@@ -116,23 +97,23 @@ class _InAppPurchaseDemoState extends State<InAppPurchaseDemo> {
       ),
       body: _available
           ? ListView(
-        children: [
-          ..._products.map((product) => ListTile(
-            title: Text(product.title),
-            subtitle: Text(product.description),
-            trailing: Text(product.price),
-            onTap: () => _buyProduct(product),
-          )),
-          Divider(),
-          ..._purchases.map((purchase) => ListTile(
-            title: Text('Purchase: ${purchase.productID}'),
-            subtitle: Text(purchase.status.toString()),
-          )),
-        ],
-      )
+              children: [
+                ..._products.map((product) => ListTile(
+                      title: Text(product.title),
+                      subtitle: Text(product.description),
+                      trailing: Text(product.price),
+                      onTap: () => _buyProduct(product),
+                    )),
+                Divider(),
+                ..._purchases.map((purchase) => ListTile(
+                      title: Text('Purchase: ${purchase.productID}'),
+                      subtitle: Text(purchase.status.toString()),
+                    )),
+              ],
+            )
           : Center(
-        child: Text("In-App Purchase service not available"),
-      ),
+              child: Text("In-App Purchase service not available"),
+            ),
     );
   }
 }
