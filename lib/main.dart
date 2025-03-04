@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payments/ApplePay/Screens/singleProductBuy.dart';
+import 'package:payments/ApplePay/Screens/subscriptionPurchase.dart';
 import 'package:payments/ApplePay/Widgets/planChanging.dart';
 import 'package:payments/ApplePay/Widgets/planChanging2.dart';
 import 'package:payments/ApplePay/subscriptionReceipt.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Demo Payment',
-      home: const SingleProductPurchase(),
+      home: const SubscriptionPurchaseScreen()//SingleProductPurchase(),
     );
   }
 }
