@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:payments/googlePay/home.dart';
+import 'package:provider/provider.dart';         // Provider প্যাকেজ ইমপোর্ট
+import 'googlePay/provider/payementProvider.dart';
+import 'googlePay/screens/subscriptionView.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => SubscriptionProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Demo Payment',
       theme: ThemeData(
-       // colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: PurchaseScreen(),
+      home: SubscriptionScreen(),
     );
   }
 }
